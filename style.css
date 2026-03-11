@@ -1,92 +1,284 @@
+/* 1. ROOT VARIABLES - The Earthly Elegance Palette */
 :root {
     --raw-cotton: #F9F7F2;
     --indigo-mist: #4A5D7A;
     --terracotta: #C17D60;
     --deep-forest: #2D3E33;
     --white: #FFFFFF;
+    --light-grey: #eeeeee;
+    --discount-red: #e74c3c;
+}
+
+/* 2. CORE RESET & BASE STYLES */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: var(--raw-cotton);
     color: var(--deep-forest);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Header Styling */
+h1, h2, h3, .logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+a {
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+/* 3. HEADER & NAVIGATION */
 .main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 5%;
-    background: var(--white);
+    background-color: var(--white);
+    padding: 1.5rem 0;
+    text-align: center;
+    border-bottom: 1px solid var(--light-grey);
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    z-index: 1000;
 }
 
 .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: var(--indigo-mist);
+    font-size: 2.5rem;
+    letter-spacing: 8px;
+    margin-bottom: 1rem;
+    color: var(--deep-forest);
 }
 
 .nav-menu ul {
     display: flex;
+    justify-content: center;
     list-style: none;
-    gap: 20px;
+    gap: 40px;
 }
 
 .nav-menu a {
-    text-decoration: none;
     color: var(--deep-forest);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 600;
     text-transform: uppercase;
-    font-weight: 500;
+    letter-spacing: 2px;
 }
 
-/* Hero Section */
+.nav-menu a:hover {
+    color: var(--terracotta);
+}
+
+/* 4. HERO SECTION (Homepage) */
 .hero {
-    height: 80vh;
-    background: #E5E0D8; /* Placeholder for lifestyle image */
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+/* 5. PRODUCT PAGE LAYOUT (Inspired by Radha Studios) */
+.page-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    max-width: 1300px;
+    margin: 40px auto;
+    gap: 40px;
+    padding: 0 20px;
 }
 
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+/* Sidebar Filter */
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
 }
 
-.cta-button {
-    background-color: var(--terracotta);
-    color: var(--white);
-    padding: 1rem 2rem;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 1rem;
-    border-radius: 2px;
+.sidebar h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--terracotta);
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--light-grey);
+}
+
+.sidebar a {
+    color: var(--deep-forest);
+    font-size: 0.95rem;
+}
+
+.sidebar a:hover {
+    color: var(--terracotta);
+    padding-left: 5px;
 }
 
 /* Product Grid */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
-    padding: 2rem 5%;
+    flex-grow: 1;
 }
 
 .product-card {
+    background: var(--white);
+    padding: 15px;
     text-align: center;
+    border: 1px solid var(--light-grey);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.product-img-placeholder {
-    background-color: #DDD;
-    height: 350px;
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.product-img {
+    width: 100%;
+    height: 380px;
+    background-color: #f2f2f2; /* Placeholder color */
     margin-bottom: 15px;
+}
+
+.save-badge {
+    background: var(--discount-red);
+    color: white;
+    padding: 5px 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    border-radius: 2px;
+}
+
+.price-old {
+    text-decoration: line-through;
+    color: #888;
+    margin-right: 10px;
+}
+
+.price-new {
+    color: var(--terracotta);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* 6. BUTTONS */
+.cta-button {
+    background: var(--indigo-mist);
+    color: var(--white);
+    padding: 14px 20px;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    width: 100%;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background: var(--deep-forest);
+}
+
+/* 7. CONTACT & FORMS */
+.contact-form {
+    background: var(--white);
+    padding: 40px;
+    border: 1px solid var(--light-grey);
+}
+
+/* 8. FOOTER */
+footer {
+    background: var(--deep-forest);
+    color: var(--raw-cotton);
+    padding: 80px 5% 40px;
+    margin-top: 80px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 50px;
+}
+
+footer h4 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--terracotta);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+footer p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer li {
+    margin-bottom: 12px;
+}
+
+footer a {
+    color: var(--raw-cotton);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+footer a:hover {
+    opacity: 1;
+    color: var(--terracotta);
+}
+
+/* 9. MOBILE RESPONSIVENESS */
+@media (max-width: 992px) {
+    .page-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-menu ul {
+        gap: 15px;
+    }
+    .nav-menu a {
+        font-size: 0.7rem;
+    }
+    .logo {
+        font-size: 1.8rem;
+    }
 }
